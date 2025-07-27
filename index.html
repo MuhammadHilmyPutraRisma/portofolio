@@ -310,6 +310,36 @@
       text-align: center;
     }
 
+    .project-image {
+      width: 100%;
+      max-width: 400px;
+      cursor: pointer;
+      border-radius: 12px;
+      transition: transform 0.2s ease;
+    }
+    .project-image:hover {
+      transform: scale(1.02);
+    }
+    
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      padding-top: 60px;
+      left: 0; top: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0,0,0,0.9);
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .modal-content {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 8px;
+    }
+
+
   </style>
 </head>
 <body>
@@ -459,7 +489,7 @@
     <div class="card data-viz">
       <h3><a href="#">User Accounts & Subscription Overview</a></h3>
       <p>Created a Metabase dashboard to track user acquisition, trial conversion, and active subscriptions across countries. The dashboard includes geographic distribution, time series trends, and conversion funnel analysis to support insights into customer behavior and subscription performance.</p>
-      <img src="assets/images/metabase dash.png" alt="Dashboard User Accounts" />
+      <img src="assets/images/metabase dash.png" alt="Dashboard User Accounts" class="project-image" onclick="openModal(this)"/>
     </div>
     
     <div class="card data-viz">
@@ -473,20 +503,20 @@
     <div class="card data-viz">
       <h3><a href="#">KPI Monitoring Dashboard</a></h3>
       <p>Created a daily monitoring dashboard using Tableau and Excel to track performance metrics across 64 outlets. Enabled branch managers to quickly identify trends and make data-driven decisions through clear, real-time KPI visualization.</p>
-      <img src="assets/images/kpi.png" alt="Dashboard KPI" />
+      <img src="assets/images/kpi.png" alt="Dashboard KPI" class="project-image" onclick="openModal(this)"/>
     </div>
 
     <div class="card data-viz">
       <h3><a href="#">Time Series Forecasting (OSL Prediction)</a></h3>
       <p>Applied the ARIMA model to three years of Outstanding Loan (OSL) data to forecast future trends with 97% accuracy. The forecasting results supported strategic planning by providing reliable insights into loan performance dynamics.</p>
-      <img src="assets/images/graph.png" alt="Forecast Graph" />
+      <img src="assets/images/graph.png" alt="Forecast Graph" class="project-image" onclick="openModal(this)"/>
     </div>
 
     <!-- Data Science Projects -->
     <div class="card data-science">
       <h3><a href="https://github.com/MuhammadHilmyPutraRisma/ab-test" target="_blank">User Retention Analysis via A/B Testing in Cookie Cats</a></h3>
       <p>Conducted A/B testing using Python to analyze the impact of moving a game progression gate in Cookie Cats. Performed data cleaning, statistical analysis, outlier removal, and hypothesis testing to evaluate player retention and engagement. Visualized results to support actionable product insights.</p>
-      <img src="assets/images/ab test.png" alt="A/B Test Analysis" />
+      <img src="assets/images/ab test.png" alt="A/B Test Analysis" class="project-image" onclick="openModal(this)"/>
       <div class="keywords">
         <span class="keyword-tag">A/B Testing</span>
         <span class="keyword-tag">Python</span>
@@ -496,7 +526,7 @@
     <div class="card data-science">
       <h3><a href="https://github.com/MuhammadHilmyPutraRisma/multi-llm-sentiment" target="_blank">Comparative Evaluation of Multi-LLM APIs for Sentiment Analysis</a></h3>
       <p>Developed a sentiment analysis system in Python integrating DeepSeek, Gemini, and GPT APIs to evaluate 2,400+ text samples; conducted multi-model classification analyzing accuracy, response time, and API cost; visualized results with confusion matrices achieving up to 99% accuracy.</p>
-      <img src="assets/images/multi_llm.png" alt="LLM Sentiment Comparison" />
+      <img src="assets/images/multi_llm.png" alt="LLM Sentiment Comparison" class="project-image" onclick="openModal(this)"/>
       <div class="keywords">
         <span class="keyword-tag">LLM</span>
         <span class="keyword-tag">Sentiment Analysis</span>
@@ -507,7 +537,7 @@
     <div class="card data-science">
       <h3><a href="https://github.com/MuhammadHilmyPutraRisma/bitcoin-arima-forecast" target="_blank">Bitcoin Price Forecast with ARIMA Model</a></h3>
       <p>Developed ARIMA models in Python and R to forecast Bitcoin prices seven days ahead. Achieved high accuracy with an average RMSE of under $200. Effectively visualized and presented insights and predictions to academic assessors, demonstrating strong forecasting and communication skills.</p>
-      <img src="assets/images/btc_forecast.png" alt="Bitcoin Forecast ARIMA" />
+      <img src="assets/images/btc_forecast.png" alt="Bitcoin Forecast ARIMA" class="project-image" onclick="openModal(this)"/>
       <div class="keywords">
         <span class="keyword-tag">ARIMA</span>
         <span class="keyword-tag">Time Series</span>
@@ -518,7 +548,7 @@
     <div class="card data-science">
       <h3><a href="https://github.com/MuhammadHilmyPutraRisma/tokocrypto-sentiment">Comparison of In-Context Learning in GPT for Sentiment Analysis Level Topic</a></h3>
       <p>Performed topic-level sentiment analysis on Tokocrypto app reviews by scraping data from the Play Store and App Store. Applied three in-context learning techniques using GPT models, with the best method achieving 99% accuracy. Utilized BERT for data representation and EFCM for topic clustering, identifying key topics with representative keywords for interpretation.</p>
-      <img src="assets/images/Sentiment-Analysis.jpg" alt="Topic Level Sentiment Analysis" />
+      <img src="assets/images/Sentiment-Analysis.jpg" alt="Topic Level Sentiment Analysis" class="project-image" onclick="openModal(this)"/>
       <div class="keywords">
         <span class="keyword-tag">Sentiment Analysis</span>
         <span class="keyword-tag">Topic Detection</span>
@@ -529,7 +559,7 @@
     <div class="card data-science">
       <h3><a href="https://github.com/MuhammadHilmyPutraRisma/temperature-torecast-sarima">Philadelphia Monthly Temperature Forecast SARIMA</a></h3>
       <p>Forecasted Philadelphia’s monthly average temperatures for 30 months ahead using SARIMA. Ensured data stationarity, identified optimal parameters via ACF/PACF analysis, and validated the model through diagnostics. Presented forecast results with clear visualizations, highlighting strong time series and analytical skills.</p>
-      <img src="assets/images/temp_forecast.png" alt="Loan Default Risk" />
+      <img src="assets/images/temp_forecast.png" alt="Loan Default Risk" class="project-image" onclick="openModal(this)"/>
       <div class="keywords">
         <span class="keyword-tag">SARIMA</span>
         <span class="keyword-tag">Time Series</span>
@@ -673,6 +703,10 @@
   <p style="margin-top: 40px; text-align: center; color: #94a3b8;">© 2025 Muhammad Hilmy Putra Risma. All rights reserved.</p>
 </footer>
 
+<div id="imgModal" class="modal" onclick="closeModal()">
+  <img class="modal-content" id="modalImage">
+</div>
+  
 <script>
   const sections = document.querySelectorAll('section');
   const navLinks = document.querySelectorAll('.nav-item');
@@ -738,6 +772,16 @@
     });
   });
 
+  function openModal(img) {
+    var modal = document.getElementById("imgModal");
+    var modalImg = document.getElementById("modalImage");
+    modal.style.display = "flex";
+    modalImg.src = img.src;
+  }
+
+  function closeModal() {
+    document.getElementById("imgModal").style.display = "none";
+  }
 </script>
 
 
