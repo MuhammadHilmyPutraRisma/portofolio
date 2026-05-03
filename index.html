@@ -342,22 +342,19 @@
       margin-bottom: 20px;
     }
 
-    .prev, .next {
-      position: fixed;
+    .arrow {
+      position: fixed; /* 🔥 ini kunci */
       top: 50%;
       transform: translateY(-50%);
       width: 50px;
       height: 50px;
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      background: rgba(0,0,0,0.6);
       color: white;
-      font-size: 22px;
+      border: none;
+      border-radius: 50%;
+      font-size: 24px;
       cursor: pointer;
-      transition: all 0.3s ease;
-      backdrop-filter: blur(6px);
+      z-index: 10000;
     }
     
     /* posisi */
@@ -371,9 +368,8 @@
     }
     
     /* Hover effect */
-    .prev:hover, .next:hover {
-      background: rgba(255, 255, 255, 0.3);
-      transform: translateY(-50%) scale(1.1);
+    .arrow:hover {
+      background: rgba(0,0,0,0.9);
     }
 
     /* Thumbnail */
@@ -947,13 +943,13 @@
   <span class="close" onclick="closeModal()">&times;</span>
 
   <!-- Arrow -->
-  <span class="prev" onclick="changeSlide(-1)">
-    <i class='bx bx-chevron-left'></i>
-  </span>
+  <button class="arrow prev" onclick="changeSlide(-1)">
+    &#10094;
+  </button>
   
-  <span class="next" onclick="changeSlide(1)">
-    <i class='bx bx-chevron-right'></i>
-  </span>
+  <button class="arrow next" onclick="changeSlide(1)">
+    &#10095;
+  </button>
 
   <!-- Main Image -->
   <img class="modal-content" id="modalImage">
@@ -961,7 +957,7 @@
   <!-- Thumbnail Container -->
   <div class="thumbnail-container" id="thumbnailContainer"></div>
 </div>
-
+<button class="arrow" style="top:100px;">TEST</button>
 </body>
 </html>
 
