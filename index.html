@@ -338,6 +338,33 @@
       max-height: 90%;
       border-radius: 8px;
     }
+    
+    .close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      color: white;
+      font-size: 30px;
+      cursor: pointer;
+    }
+    
+    .prev, .next {
+      position: absolute;
+      top: 50%;
+      color: white;
+      font-size: 40px;
+      cursor: pointer;
+      padding: 10px;
+      transform: translateY(-50%);
+      user-select: none;
+    }
+
+    .prev { left: 20px; }
+    .next { right: 20px; }
+
+    .prev:hover, .next:hover {
+      color: #2563eb;
+    }
 
 
   </style>
@@ -450,7 +477,7 @@
   <div class="card">
     <h3>Data Analyst Intern – PT Bank Rakyat Indonesia (Persero) Tbk</h3>
     <p><strong>Dec 2025 - Present</strong></p>
-    <p>Conducted employee productivity and performance analysis across 18 Regional Offices by examining key indicators alongside demographic and tenure factors to identify performance patterns. Developed analytical reports and presentation materials based on data from 26,000+ Mantri to support management and executive discussions, and contributed to the standardization of productivity frameworks using multiple performance indicators to ensure consistent, data-driven performance assessment.</p>
+    <p>Conducting employee productivity analysis and identifying correlations with demographic factors to uncover performance patterns. Developed dashboards and analytical reports to support monitoring and management decision-making. Also analyzed survey data using NLP techniques to extract insights and support data-driven evaluation.</p>
     <div class="keywords">
       <span class="keyword-tag">Python</span>
       <span class="keyword-tag">Tableau</span>
@@ -499,6 +526,22 @@
   <div class="card-grid" id="project-container">
 
     <!-- Data Visualization Projects -->
+    <div class="card data-viz">
+      <h3>User Accounts & Subscription Overview</h3>
+      <p>
+        Created a Metabase dashboard to track user acquisition, trial conversion,
+        and active subscriptions across countries.
+      </p>
+
+      <!-- Thumbnail (gambar pertama saja) -->
+      <img src="assets/images/metabase dash.png"
+          class="project-image"
+          onclick="openModal([
+            'assets/images/ab test.png',
+            'assets/images/btc_forecast.png'
+          ], 0)">
+    </div>
+    
     <div class="card data-viz">
       <h3><a>User Accounts & Subscription Overview</a></h3>
       <p>Created a Metabase dashboard to track user acquisition, trial conversion, and active subscriptions across countries. The dashboard includes geographic distribution, time series trends, and conversion funnel analysis to support insights into customer behavior and subscription performance.</p>
@@ -785,18 +828,47 @@
     });
   });
 
-  function openModal(img) {
-    var modal = document.getElementById("imgModal");
-    var modalImg = document.getElementById("modalImage");
-    modal.style.display = "flex";
-    modalImg.src = img.src;
+  let images = [];
+  let currentIndex = 0;
+
+  function openModal(imgArray, index) {
+    images = imgArray;
+    currentIndex = index;
+
+    document.getElementById("imgModal").style.display = "flex";
+    document.getElementById("modalImage").src = images[currentIndex];
   }
 
   function closeModal() {
     document.getElementById("imgModal").style.display = "none";
   }
-</script>
 
+  function changeSlide(direction) {
+    currentIndex += direction;
+
+    if (currentIndex < 0) currentIndex = images.length - 1;
+    if (currentIndex >= images.length) currentIndex = 0;
+
+    document.getElementById("modalImage").src = images[currentIndex];
+  }
+  
+  document.addEventListener("keydown", function(e) {
+    if (e.key === "Escape") closeModal();
+    if (e.key === "ArrowRight") changeSlide(1);
+    if (e.key === "ArrowLeft") changeSlide(-1);
+  });
+  
+</script>
+  
+<div id="imgModal" class="modal">
+  <span class="close" onclick="closeModal()">&times;</span>
+
+  <img class="modal-content" id="modalImage">
+
+  <!-- Navigation -->
+  <span class="prev" onclick="changeSlide(-1)">&#10094;</span>
+  <span class="next" onclick="changeSlide(1)">&#10095;</span>
+</div>
 
 </body>
 </html>
