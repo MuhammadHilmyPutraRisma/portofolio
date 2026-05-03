@@ -335,6 +335,10 @@
       flex-direction: column;
     }
 
+    .modal.show {
+      display: flex;
+    }
+
     .modal-content {
       max-height: 75%;
       max-width: 90%;
@@ -864,9 +868,13 @@
   function openModal(imgArray, index) {
     images = imgArray;
     currentIndex = index;
-
-    document.getElementById("imgModal").style.display = "flex";
-    updateImage();
+  
+    const modal = document.getElementById("imgModal");
+    const img = document.getElementById("modalImage");
+  
+    modal.classList.add("show"); // ✅ bukan display
+    img.src = images[currentIndex];
+  
     renderThumbnails();
   }
 
