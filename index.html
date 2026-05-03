@@ -335,10 +335,6 @@
       flex-direction: column;
     }
 
-    .modal.show {
-      display: flex;
-    }
-
     .modal-content {
       max-height: 75%;
       max-width: 90%;
@@ -869,12 +865,8 @@
     images = imgArray;
     currentIndex = index;
   
-    const modal = document.getElementById("imgModal");
-    const img = document.getElementById("modalImage");
-  
-    modal.classList.add("show"); // ✅ bukan display
-    img.src = images[currentIndex];
-  
+    document.getElementById("imgModal").style.display = "flex";
+    updateImage();
     renderThumbnails();
   }
 
