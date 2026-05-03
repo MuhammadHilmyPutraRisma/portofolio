@@ -872,18 +872,35 @@
 
   function renderThumbnails() {
     const container = document.getElementById("thumbnailContainer");
+
+    if (!container) {
+      console.error("thumbnailContainer tidak ditemukan");
+      return;
+    }
+
     container.innerHTML = "";
 
     images.forEach((img, index) => {
       const thumb = document.createElement("img");
       thumb.src = img;
+
+      thumb.style.width = "60px";
+      thumb.style.height = "60px";
+      thumb.style.objectFit = "cover";
+      thumb.style.cursor = "pointer";
+      thumb.style.borderRadius = "6px";
+      thumb.style.opacity = "0.6";
+
+      if (index === currentIndex) {
+        thumb.style.opacity = "1";
+        thumb.style.border = "2px solid #22c55e";
+      }
+
       thumb.onclick = () => {
         currentIndex = index;
-        updateImage();
-        highlightThumbnail();
+        document.getElementById("modalImage").src = images[currentIndex];
+        renderThumbnails();
       };
-
-      if (index === currentIndex) thumb.classList.add("active");
 
       container.appendChild(thumb);
     });
@@ -920,13 +937,6 @@
 
 </body>
 </html>
-
-
-
-
-
-
-
 
 
 
